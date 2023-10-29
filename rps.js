@@ -55,7 +55,7 @@ function game() {
         } else if (result.slice(0,5) == 'You l') {
             computerScore++;
         } else {
-            continue;
+            //Do nothing
         };
         console.log(`Round ${i+1}: ${playerScore} - ${computerScore}`)
     }
