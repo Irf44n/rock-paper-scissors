@@ -35,12 +35,41 @@ function playRound(computerSelection, playerSelection) {
     }
 }
 
+// Set counter for each win
+// counter ++ if win
+// play 5 rounds
 
-let playerSelection = prompt('Choose your weapon: Rock, Paper or Scissors.');
-playerSelection = playerSelection.toLowerCase();
+function game() {
+    let computerScore = 0;
+    let playerScore = 0;
+    
+    
+    for (let i=0; i<5; i++) {
+        let playerSelection = prompt('Choose your weapon: Rock, Paper or Scissors.');
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = getComputerChoice();
+        result = playRound(computerSelection, playerSelection);
+        console.log(result);
+        if (result.slice(0,5) == 'You w') {
+            playerScore++;
+        } else if (result.slice(0,5) == 'You l') {
+            computerScore++;
+        } else {
+            continue;
+        };
+        console.log(`Round ${i+1}: ${playerScore} - ${computerScore}`)
+    }
 
-computerSelection = getComputerChoice();
 
-result = playRound(computerSelection, playerSelection);
-console.log(result);
+    if (playerScore > computerScore) {
+        console.log('You win the game. YAY!');
+    } else if (playerScore < computerScore) {
+        console.log('You lose the game.BRUH!');
+    } else {
+        console.log('The game is a draw.')
+    }
+}
+
+game()
+
 
