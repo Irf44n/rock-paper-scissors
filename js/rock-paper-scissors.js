@@ -9,4 +9,25 @@ function getComputerChoice() {
     };
 }
 
+
+function getHumanChoice() {
+    while (true) {
+        let choice = prompt("Choose rock, paper or scissors.");
+        if (choice === "rock" || choice === "paper" || choice === "scissors") {
+            return choice;
+        } else if (choice === null) {
+            alert("Prompt canceled. Exiting...");
+            break;
+        } else {
+            alert("Invalid Choice. Go Again."); 
+        };
+    }
+}
+
+
+let humanScore = 0, computerScore = 0;
+
 console.log(getComputerChoice());
+console.log(getHumanChoice());
+console.log(humanScore)
+console.log(computerScore)
