@@ -13,11 +13,16 @@ function getComputerChoice() {
 function getHumanChoice() {
     while (true) {
         let choice = prompt("Choose rock, paper or scissors.");
-        if (choice === "rock" || choice === "paper" || choice === "scissors") {
-            return choice;
-        } else if (choice === null) {
+
+        if (choice === null) {
             alert("Prompt canceled. Exiting...");
             break;
+        }
+
+        choice = choice.toLowerCase()
+        
+        if (choice === "rock" || choice === "paper" || choice === "scissors") {
+            return choice;
         } else {
             alert("Invalid Choice. Go Again."); 
         };
