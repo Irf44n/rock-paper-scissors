@@ -16,11 +16,11 @@ function getHumanChoice() {
 
         if (choice === null) {
             alert("Prompt canceled. Exiting...");
-            break;
+            return null;
         }
 
         choice = choice.toLowerCase()
-        
+
         if (choice === "rock" || choice === "paper" || choice === "scissors") {
             return choice;
         } else {
@@ -30,9 +30,24 @@ function getHumanChoice() {
 }
 
 
-let humanScore = 0, computerScore = 0;
+function playRound(humanChoice, computerChoice) {
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
-console.log(humanScore)
-console.log(computerScore)
+    if (humanChoice === null) {
+        return 0
+    }
+
+
+    if (humanChoice == computerChoice) {
+        return "It's a tie."
+    } else if (humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper") {
+        return (`You WON!!! ${humanChoice} beats ${computerChoice}`)
+    } else {
+        return (`You LOST!!! ${computerChoice} beats ${humanChoice}`)
+    }
+}
+
+
+let humanScore = 0, computerScore = 0;
+let humanChoice = getHumanChoice()
+let computerChoice = getComputerChoice()
+console.log(playRound(humanChoice, computerChoice))
