@@ -34,12 +34,6 @@ function playGame() {
     let humanScore = 0, computerScore = 0;
 
     function playRound(humanChoice, computerChoice) {
-
-        if (humanChoice === null) {
-            return ''
-        };
-    
-    
         if (humanChoice == computerChoice) {
             return "It's a tie."
         } else if (humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper") {
@@ -61,15 +55,21 @@ function playGame() {
         let humanChoice = getHumanChoice();
         let computerChoice = getComputerChoice();
 
-        if (playRound(humanChoice, computerChoice) === "") {
-            return "";
+        if (humanChoice === null) {
+            return ''
         };
 
         console.log(playRound(humanChoice, computerChoice));
         console.log(showScore());
     }
 
-    return humanScore > computerScore ? `YOU WON THE GAME` : `THE COMPUTER WON`
+    if (humanScore > computerScore) {
+        return "You won the game!"
+    } else if (humanScore < computerScore) {
+        return "Oh no. You lost the game."
+    } else {
+        return "The game has ended in a tie!"
+    }
 }
 
 
