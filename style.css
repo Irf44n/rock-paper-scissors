@@ -14,3 +14,7 @@ body {
 .top {
     height: 200px;
 }
+
+#reload {
+    margin-top: 50px;
+}
