@@ -1,0 +1,16 @@
+button {
+    padding: 5px 10px;
+    font-weight: bold;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: solid 2px ghostwhite;
+}
+
+body {
+    text-align: center;
+    background-color: rgba(19, 171, 209, 0.3)
+}
+
+.top {
+    height: 200px;
+}
