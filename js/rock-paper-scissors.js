@@ -15,10 +15,10 @@ function playRound(humanChoice, computerChoice) {
         return (`You chose ${humanChoice}. It's a tie.`)
     } else if (humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper") {
         humanScore += 1;
-        return (`You WON!!! ${humanChoice} beats ${computerChoice}`)
+        return (`You won the round! ${humanChoice} beats ${computerChoice}.`)
     } else {
         computerScore += 1;
-        return (`You LOST!!! ${computerChoice} beats ${humanChoice}`)
+        return (`You lost the round! ${computerChoice} beats ${humanChoice}.`)
     }; 
  }
 
@@ -34,12 +34,17 @@ const buttons = document.querySelectorAll("button");
 const divRound = document.querySelector("#round");
 const divScore = document.querySelector("#score");
 
-
 buttons.forEach(button => {
     button.addEventListener("click", () => {
         let computerChoice = getComputerChoice();
         divRound.textContent = playRound(button.id, computerChoice);
         divScore.textContent = showScore();
+
+        if (humanScore == 5 ) {
+            divRound.textContent = `You WON the game!!! ${button.id} beats ${computerChoice}.`
+        } else if (computerScore == 5) {
+            divRound.textContent = `You LOST the game!!! ${computerChoice} beats ${button.id}.`
+        }
     })
 });
 
