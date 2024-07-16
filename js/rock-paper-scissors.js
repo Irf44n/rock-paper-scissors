@@ -34,26 +34,47 @@ function showScore() {
     });
  }
 
+
+ function addReloadButton() {
+    const reloadButton = document.createElement("button");
+    reloadButton.textContent = "Reload Game";
+    divReload.appendChild(reloadButton);
+
+    reloadButton.addEventListener("click", () => {
+        location.reload();
+    });
+ }
+
+
 let humanScore = 0, computerScore = 0;
 
 const buttons = document.querySelectorAll("button");
 const divRound = document.querySelector("#round");
 const divScore = document.querySelector("#score");
+const divReload = document.querySelector("#reload");
 
 buttons.forEach(button => {
+
     button.addEventListener("click", () => {
+
         let computerChoice = getComputerChoice();
         divRound.textContent = playRound(button.id, computerChoice);
         divScore.textContent = showScore();
 
         if (humanScore == 5 ) {
+
             disableButtons(buttons);
             divRound.textContent = `You WON the game!!! ${button.id} beats ${computerChoice}.`;
+            addReloadButton();
+
         } else if (computerScore == 5) {
+
             disableButtons(buttons);
             divRound.textContent = `You LOST the game!!! ${computerChoice} beats ${button.id}.`;
-        }
-    })
+            addReloadButton();
+
+        };
+    });
 });
 
 
