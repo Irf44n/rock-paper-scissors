@@ -28,6 +28,12 @@ function showScore() {
  }
 
 
+ function disableButtons(buttons) {
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+ }
+
 let humanScore = 0, computerScore = 0;
 
 const buttons = document.querySelectorAll("button");
@@ -41,9 +47,11 @@ buttons.forEach(button => {
         divScore.textContent = showScore();
 
         if (humanScore == 5 ) {
-            divRound.textContent = `You WON the game!!! ${button.id} beats ${computerChoice}.`
+            disableButtons(buttons);
+            divRound.textContent = `You WON the game!!! ${button.id} beats ${computerChoice}.`;
         } else if (computerScore == 5) {
-            divRound.textContent = `You LOST the game!!! ${computerChoice} beats ${button.id}.`
+            disableButtons(buttons);
+            divRound.textContent = `You LOST the game!!! ${computerChoice} beats ${button.id}.`;
         }
     })
 });
